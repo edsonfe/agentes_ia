@@ -4,13 +4,13 @@ class Recurso(Agent):
     def __init__(self, unique_id, model, tipo, pos, utilidade=1):
         super().__init__(unique_id, model)
         self.tipo = tipo  # "Cristal", "Metal" ou "Estrutura"
-        self.pos = pos  # A posição (tupla) deve ser passada
+        self.pos = pos
         self.utilidade = utilidade
         self.sendo_transportado = False
         self.agente_esperando = None  # Apenas para Estrutura
 
     def step(self):
-        pass  # Recursos não se movem nem agem por conta própria
+        pass
 
 
     def iniciar_transporte(self):
@@ -18,7 +18,6 @@ class Recurso(Agent):
         self.sendo_transportado = True
 
 class BaseInicial(Agent):
-    """ Representa a base central onde os recursos são entregues. """
     def __init__(self, unique_id, model):
         super().__init__(unique_id, model)
         self.recursos_entregues = []  # Lista de recursos entregues

@@ -2,7 +2,7 @@ from mesa.visualization.modules import CanvasGrid
 from mesa.visualization.ModularVisualization import ModularServer
 from planet_model import PlanetaModelo
 from objetos import Recurso, BaseInicial
-from agentes import AgenteReativoSimples, AgenteBaseadoEmEstado, AgenteBaseadoEmObjetivos, AgenteCooperativo, AgenteBDI  # 🔹 Importando o BDI
+from agentes import AgenteReativoSimples, AgenteBaseadoEmEstado, AgenteBaseadoEmObjetivos, AgenteCooperativo, AgenteBDI 
 
 def agent_portrayal(agent):
     """ Define como cada agente será visualizado na simulação. """
@@ -32,10 +32,10 @@ def agent_portrayal(agent):
 
     return {"Shape": "circle", "Filled": "true", "Color": "gray", "Layer": 2, "r": 0.3}
 
-# Criando o grid visualizado
+# grid visualizado
 grid = CanvasGrid(agent_portrayal, 20, 20, 500, 500)
 
-# Configuração do servidor
+# servidor
 server = ModularServer(
     PlanetaModelo,
     [grid],

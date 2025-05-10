@@ -7,7 +7,7 @@ from agentes import (
     AgenteBaseadoEmEstado, 
     AgenteBaseadoEmObjetivos, 
     AgenteCooperativo,
-    AgenteBDI  # 🔹 Importando o novo agente BDI
+    AgenteBDI 
 )
 
 class PlanetaModelo(Model):
@@ -18,16 +18,16 @@ class PlanetaModelo(Model):
         self.width = width
         self.height = height
 
-        # 🔹 Base Inicial
+        # Base Inicial
         self.base_pos = (0, 0)
         self.base = BaseInicial("BASE", self)
         self.grid.place_agent(self.base, self.base_pos)
 
-        # 🔹 Criando o Agente BDI
-        self.bdi = AgenteBDI("BDI", self, self.base_pos)  # 🔹 Instanciando o BDI como um agente
+        # Agente BDI
+        self.bdi = AgenteBDI("BDI", self, self.base_pos) 
         self.grid.place_agent(self.bdi, self.base_pos)
 
-        # 🔹 Adicionando recursos naturais
+        # recursos
         for i in range(num_recursos):
             pos = self.gerar_posicao_valida()
             tipo_recurso = random.choice(["Cristal", "Metal", "Estrutura"])
@@ -35,7 +35,7 @@ class PlanetaModelo(Model):
             recurso = Recurso(f"R_{i}", self, tipo_recurso, utilidade)
             self.grid.place_agent(recurso, pos)
 
-        # 🔹 Agentes reativos simples
+        # Agentes reativos simples
         self.agentes_reativos = []
         for i in range(num_agentes_reativos):
             pos = self.gerar_posicao_valida()
@@ -43,7 +43,7 @@ class PlanetaModelo(Model):
             self.agentes_reativos.append(agente)
             self.grid.place_agent(agente, pos)
 
-        # 🔹 Agentes baseados em estado
+        # Agentes baseados em estado
         self.agentes_baseados_estado = []
         for i in range(num_agentes_estado):
             pos = self.gerar_posicao_valida()
@@ -52,7 +52,7 @@ class PlanetaModelo(Model):
             self.agentes_baseados_estado.append(agente)
             self.grid.place_agent(agente, pos)
 
-        # 🔹 Agentes baseados em objetivos
+        # Agentes baseados em objetivos
         self.agentes_baseados_objetivos = []
         for i in range(num_agentes_objetivos):
             pos = self.gerar_posicao_valida()
@@ -61,7 +61,7 @@ class PlanetaModelo(Model):
             self.agentes_baseados_objetivos.append(agente)
             self.grid.place_agent(agente, pos)
 
-        # 🔹 Agentes cooperativos
+        # Agentes cooperativos
         self.agentes_cooperativos = []
         for i in range(num_agentes_cooperativos):
             pos = self.gerar_posicao_valida()
@@ -80,7 +80,7 @@ class PlanetaModelo(Model):
 
     def step(self):
         """ Executa um passo da simulação. """
-        self.bdi.step()  # 🔹 O BDI processa crenças primeiro
+        self.bdi.step()  # O BDI processa crenças primeiro
         
         for agente in self.agentes_reativos:
             agente.step()
